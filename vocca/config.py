@@ -133,6 +133,11 @@ class VoccaConfig:
         self.model.validate()
         self.codec.validate()
         self.generation.validate()
+        if self.codec.codebook_size != self.model.codebook_size:
+            raise ConfigError(
+                "codec.codebook_size 与 model.codebook_size 必须一致"
+                f"（{self.codec.codebook_size} != {self.model.codebook_size}）"
+            )
         return self
 
     # -- YAML ------------------------------------------------------------
