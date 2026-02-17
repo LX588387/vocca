@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "vocca"
-version = "0.1.0"
+version = "0.2.0"
 description = "文本 / 提示驱动的可控声音生成框架：情感 / 风格 / 音色可控，支持流式推理"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -41,6 +41,11 @@ packages = ["vocca"]
 [tool.black]
 line-length = 100
 target-version = ["py39", "py310", "py311", "py312"]
+
+[tool.coverage.run]
+branch = true
+source = ["vocca"]
+omit = ["vocca/integrations/*", "vocca/cli.py"]
 
 [tool.pytest.ini_options]
 minversion = "7.0"
