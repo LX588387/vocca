@@ -105,7 +105,7 @@ def self_attention(
     k = _repeat_kv(k, n_rep)
     v = _repeat_kv(v, n_rep)
 
-    scale = 1.0 / head_dim
+    scale = 1.0 / np.sqrt(head_dim)
     scores = np.einsum("hqd,hkd->hqk", q, k) * scale  # (n_heads, seq, total)
 
     # 因果掩码：绝对位置 (past_len + i) 只能看 j <= past_len + i。
