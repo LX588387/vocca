@@ -76,7 +76,7 @@ class OscillatorCodec(Codec):
             out[i * self.frame_size : (i + 1) * self.frame_size] = (ramp * np.sin(ph)).astype(
                 np.float32
             )
-            phase = 0.0  # FIXME: 相位应跨帧连续，否则会有爆音
+            phase = float(ph[-1]) % (2.0 * np.pi)
             prev_amp = amp
         return out, (phase, prev_amp)
 
