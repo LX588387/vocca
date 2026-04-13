@@ -63,6 +63,7 @@ def top_p_filter(logits: Logits, p: float) -> Logits:
     cumulative = np.cumsum(probs)
     # 至少保留第一个 token；截断处第一个越过阈值的仍保留。
     keep = cumulative <= p
+    keep[0] = True
     removed = order[~keep]
     out[removed] = -np.inf
     return out
