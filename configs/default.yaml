@@ -1,0 +1,28 @@
+# vocca 默认配置（小模型，便于快速试跑与 CI）
+model:
+  text_vocab: 256
+  codebook_size: 256
+  dim: 128
+  n_layers: 4
+  n_heads: 4
+  n_kv_heads: 4
+  ffn_mult: 2.6667
+  max_seq_len: 2048
+  rope_base: 10000.0
+  control_prefix: 1
+  seed: 0
+codec:
+  name: oscillator
+  sample_rate: 24000
+  frame_size: 320
+  codebook_size: 256
+  options: {}
+generation:
+  max_new_tokens: 256
+  temperature: 0.9
+  top_k: 40
+  top_p: 0.95
+  repetition_penalty: 1.1
+  guidance_scale: 1.5
+  seed: 0
+  stop_on_eos: true
