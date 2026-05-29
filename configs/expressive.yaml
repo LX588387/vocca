@@ -1,0 +1,28 @@
+# 更“听话”的配置：更强的引导 + 更低的温度，控制信号更鲜明
+model:
+  text_vocab: 256
+  codebook_size: 256
+  dim: 128
+  n_layers: 4
+  n_heads: 4
+  n_kv_heads: 4
+  ffn_mult: 2.6667
+  max_seq_len: 2048
+  rope_base: 10000.0
+  control_prefix: 2
+  seed: 0
+codec:
+  name: oscillator
+  sample_rate: 24000
+  frame_size: 320
+  codebook_size: 256
+  options: {}
+generation:
+  max_new_tokens: 384
+  temperature: 0.7
+  top_k: 20
+  top_p: 0.9
+  repetition_penalty: 1.15
+  guidance_scale: 3.0
+  seed: 0
+  stop_on_eos: true
