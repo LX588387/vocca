@@ -1,0 +1,18 @@
+[build-system]
+requires = ["hatchling>=1.21"]
+build-backend = "hatchling.build"
+
+[project]
+name = "vocca"
+version = "0.1.0"
+description = "文本 / 提示驱动的可控声音生成框架"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Dai Yanan" }]
+dependencies = [
+    "numpy>=1.21",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["vocca"]
