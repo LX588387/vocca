@@ -5,14 +5,47 @@ build-backend = "hatchling.build"
 [project]
 name = "vocca"
 version = "0.1.0"
-description = "文本 / 提示驱动的可控声音生成框架"
+description = "文本 / 提示驱动的可控声音生成框架：情感 / 风格 / 音色可控，支持流式推理"
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
 authors = [{ name = "Dai Yanan" }]
+keywords = ["audio", "text-to-speech", "audio-generation", "streaming"]
 dependencies = [
     "numpy>=1.21",
+    "pyyaml>=6.0",
 ]
+
+[project.optional-dependencies]
+torch = ["torch>=2.0"]
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "ruff>=0.4",
+    "black>=24.0",
+    "mypy>=1.8",
+    "pre-commit>=3.5",
+    "types-PyYAML>=6.0",
+]
+
+[project.scripts]
+vocca = "vocca.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/LX588387/vocca"
+Repository = "https://github.com/LX588387/vocca"
 
 [tool.hatch.build.targets.wheel]
 packages = ["vocca"]
+
+[tool.black]
+line-length = 100
+target-version = ["py39", "py310", "py311", "py312"]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q"
+testpaths = ["tests"]
+markers = [
+    "torch: 需要可选的 torch 依赖（core 测试不依赖）",
+]
