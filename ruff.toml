@@ -1,0 +1,17 @@
+target-version = "py39"
+line-length = 100
+src = ["vocca", "tests"]
+
+[lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4", "SIM"]
+ignore = [
+    "E501",   # 行宽交给 black
+    "B905",   # zip strict= 兼容 3.9
+]
+
+[lint.per-file-ignores]
+"tests/*" = ["B", "SIM"]
+"vocca/integrations/*" = ["E731"]
+
+[lint.isort]
+known-first-party = ["vocca"]
