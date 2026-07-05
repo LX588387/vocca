@@ -1,0 +1,6 @@
+# 默认按文本处理，统一换行为 LF
+* text=auto eol=lf
+
+*.png binary
+*.wav binary
+*.npz binary
